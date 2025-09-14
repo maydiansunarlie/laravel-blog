@@ -1,0 +1,32 @@
+pipeline {
+    agent {label'devops-01-maydian'}
+
+    stages {
+        stage('Pull Source Code') {
+            steps {
+                echo 'Pull Source Code'
+            }
+        }
+        stage('Testing Application') {
+            steps {
+                echo 'Testing Application'
+            }
+        }
+        stage('Build Container Image') {
+            steps {
+                echo 'Build Container Image'
+            }
+        }
+        stage('Deploy Container Application') {
+            steps {
+                echo 'Deploy Container Application'
+            }
+        }
+        
+        stage('Publish Container Image') {
+            steps {
+                echo 'Publish Container Image'
+            }
+        }
+    }
+}
