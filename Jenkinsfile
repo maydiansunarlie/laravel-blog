@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Testing Application') {
             steps {
-                echo 'Testing Application'
+                sh 'php artisan test'
             }
         }
         stage('Build Container Image') {
