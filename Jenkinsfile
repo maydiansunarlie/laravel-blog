@@ -16,7 +16,7 @@ pipeline {
             }
         }
 
-       /* stage('Testing Application') {
+       /*stage('Testing Application') {
             steps {
                 sh''' 
                 composer install --no-dev --optimize-autoloader
@@ -26,6 +26,23 @@ pipeline {
             }
         }*/
 
+       stage('Code Quality Analysis') {
+            steps {
+                sh''' 
+                sonar-scanner \
+                 -Dsonar.projectKey=laravel-blog \
+                -Dsonar.sources=. \
+                -Dsonar.host.url=http://172.23.5.22:9000 \
+                -Dsonar.token=sqp_de6881ca66747a14babf144a81a70ac4ef5a713b
+                
+                '''
+            }
+        }
+
+       
+       
+       
+       
         stage('Build Container Image') {
             steps {
                 sh '''
@@ -46,7 +63,7 @@ pipeline {
                 echo 'Publish Container Image'
             }
         }*/
-        
+
         stage('Publish Container Image') {
             steps {
                 sh '''
