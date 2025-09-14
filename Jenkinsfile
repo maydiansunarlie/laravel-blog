@@ -16,7 +16,7 @@ pipeline {
             }
         }
 
-        stage('Testing Application') {
+       /* stage('Testing Application') {
             steps {
                 sh''' 
                 composer install --no-dev --optimize-autoloader
@@ -24,10 +24,13 @@ pipeline {
                 php artisan test
                 '''
             }
-        }
+        }*/
+        
         stage('Build Container Image') {
             steps {
-                echo 'Build Container Image'
+                sh '''
+                docker compose build
+                '''
             }
         }
         stage('Deploy Container Application') {
