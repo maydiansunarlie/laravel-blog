@@ -9,7 +9,11 @@ pipeline {
         }
         stage('Testing Application') {
             steps {
-                sh 'php artisan test'
+                sh''' 
+                composer install --no-dev --optimize-autoloader
+                composer require fakerphp/faker --dev
+                php artisan test
+                '''
             }
         }
         stage('Build Container Image') {
